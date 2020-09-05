@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bqbenchmark-deployment
+spec:
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: bqbenchmark
+    spec:
+      containers:
+        - image: larsgmu/bqbenchmark
+          imagePullPolicy: Always
+          name: bqbenchmark
+          ports:
+            - containerPort: 5000

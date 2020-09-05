@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bqbenchmark
+  labels:
+    app: bqbenchmark
+spec:
+  containers:
+    - image: larsgmu/bqbenchmark
+      name: bqbenchmark
+      ports:
+        - containerPort: 80
